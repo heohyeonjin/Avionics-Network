@@ -25,9 +25,15 @@ public class Controller {
         return "setting & find feasible";
     }
 
-    @GetMapping("/{name}") // name에 switch 이름 입력하면 optimal solution 저장
-    public String SwitchConfig(@PathVariable String name) {
-        switchConfiguratorService.find_minimum_bandwidth_configuration(name); // 스위치 별로 configurator
+    @GetMapping("/all") // name에 switch 이름 입력하면 optimal solution 저장
+    public String SwitchConfig() {
+        switchConfiguratorService.find_minimum_bandwidth_configuration(); // 스위치 별로 configurator
         return "optimal solution";
+    }
+
+    @GetMapping("/all_global")
+    public String SwitchConfigGlobal(){
+        switchConfiguratorService.find_minimum_bandwidth_configuration_global();
+        return "global solution";
     }
 }
